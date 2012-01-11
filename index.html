@@ -1,0 +1,23 @@
+<html>
+<head>
+    <title></title>
+    
+    <script src="vendor/jquery-1.7.1.min.js" type="text/javascript" charset="utf-8"></script>
+    <script src="proto.js" type="text/javascript" charset="utf-8"></script>
+
+    <script type="text/javascript" charset="utf-8" async defer>
+     //uso do $ objeto do jquery para chamar a função apenas quando estiver tudo carregado e verifiar se o javascript pode ser carregado
+     //função anonima: cria uma clausura. Tudo que estiver escrito fora dela, não permite seu uso. Aumenta portabilidade do codigo, sendo que um script não influencia no outro. Importante para uso de variaveis globais, para que nao colida com nome de varias de outras funções ou bibliotecas encapsuladas.
+     $(function(){
+
+         var fracao = new grafico(600, 400, 1, 1);
+
+     });
+    </script>
+
+    <link rel="stylesheet" href="css/principal.css">
+</head>
+<body>
+
+</body>
+</html>

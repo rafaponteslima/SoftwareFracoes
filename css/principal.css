@@ -1,0 +1,16 @@
+.grafico{
+    margin:0 auto;
+    outline:1px solid #333;
+}
+
+.grafico > .grafico{
+    float:left;
+}
+
+.grafico > .grafico:hover, .grafico > .grafico.selecionado{
+    background-color:#88cccc;
+}
+
+.grafico > .grafico:active{
+    background-color:#ccc;
+}
