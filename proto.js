@@ -1,37 +1,19 @@
-//função tipo singleton (objeto único) - é o objeto (retangulo maior). Matriz 1x1. 
-//Fracton pode ser mudado para ambiente de fração.
 function fractron(){
     this._init();
 }
-
-//{}notaçao para novo objeto {} = new Object();
-//[]notação para novo vetor  [] = new Array();
- 
-//Prototype -> Propriedade do objeto. Esta propriedade é nativa do javascript. Todo 
-//objeto possui esta função.
-//Aqui, estamos sobreescrevendo (adicionando) as propriedade (prototype).
 fractron.prototype = {
     _init: function(){},
     questoes : [],
     graficos : [],
+    elem: undefined
 }
 
-//Instanciando a Aplicação (retangulo maior)
 const Fractron = new fractron();
 
-//função que cria o objeto matriz, com linhas e colunas.
 function grafico(w, h, linhas, colunas){
     this._init(w, h, linhas, colunas);
 }
-
 grafico.prototype = {
-    
-    partes: [],
-    linhas:1,
-    colunas:1,
-    elem: undefined,
-    selecionado:false,
-    
     _init: function(w, h, linhas, colunas){
 
         Fractron.graficos.push(this);
@@ -39,21 +21,18 @@ grafico.prototype = {
         this.linhas = linhas;
         this.colunas = colunas;
 
-        this.elem = $('<div class="grafico"></div>');//usar a formatação css 
-                                                     //(div com a classe grafico)
+        this.elem = $('<div class="grafico"></div>');
         this.elem.attr('id', 'grafico'+Fractron.graficos.length)
                  .width(w)
                  .height(h);
 
         this.renderizar();
-        $('body').prepend(this.elem);// prepend: pegar o objeto da 
-                                     //memoria e disponibilizar no html
-        
-        this.elem.bind('dblclick', function(){//duplo clique apenas no elemento maior
+        $('body').prepend(this.elem);
+
+        this.elem.bind('dblclick', function(){
             this.tecer();
         }.bind(this));
     },
-    
     renderizar: function(){
 
         this.partes.forEach(function(parte){
@@ -63,10 +42,7 @@ grafico.prototype = {
         this.partes = [];
 
         this.partes.w = Math.floor(this.elem.width() / this.colunas);
-        //Math: função do javascript para calculos matematicos
-        //floor: arredondamento do valos da largura do objetos para
-        //dividir os quadros em partes iguais. Trabalha com valores em pixel.
-        this.partes.h = Math.floor(this.elem.height() / this.linhas);
+        this.partes.h = this.elem.height() / this.linhas;
 
         for(i = 0; i < this.colunas * this.linhas; i++){
             var parte;
@@ -77,14 +53,19 @@ grafico.prototype = {
             this.partes.push(parte);
             this.elem.append(parte);
 
-            parte.click(function(){//evento de seleção
+            parte.click(function(){
                 $(this).toggleClass('selecionado');
             });
         }    
     },
-    tecer: function(){//aumenta a malha de linhas e colunas
+    tecer: function(){
         this.linhas = this.linhas*2;
         this.colunas = this.colunas*2;
         this.renderizar();
     },
+    partes: [],
+    linhas:1,
+    colunas:1,
+    elem: undefined,
+    selecionado:false,
 }

@@ -1,9 +1,12 @@
 .grafico{
     margin:0 auto;
     outline:1px solid #333;
+    margin:40px;
+    float:left;
 }
 
 .grafico > .grafico{
+    margin:0;
     float:left;
 }
 
