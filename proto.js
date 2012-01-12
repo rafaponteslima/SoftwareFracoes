@@ -21,17 +21,41 @@ grafico.prototype = {
         this.linhas = linhas;
         this.colunas = colunas;
 
-        this.elem = $('<div class="grafico"></div>');
+        this.elem = $('<div class="grafico" draggable="true"></div>');
         this.elem.attr('id', 'grafico'+Fractron.graficos.length)
                  .width(w)
                  .height(h);
 
         this.renderizar();
-        $('body').prepend(this.elem);
+        $('#palco').append(this.elem);
 
         this.elem.bind('dblclick', function(){
             this.tecer();
         }.bind(this));
+
+        this.elem.bind('dragstart', function(e){
+        });
+
+        this.elem.bind('dragend', function(e){
+            console.log(e);
+            $(this).css({ position:'absolute',
+                          top: e.originalEvent.y,
+                          left: e.originalEvent.x,
+                          margin:0 });
+        });
+
+        this.elem.bind('mousemove', function(e){
+            if(e.ctrlKey == true){
+                $(this).css({ position:'absolute',
+                              top: e.pageY - $(this).height() / 2,
+                              left: e.pageX - $(this).width() / 2,
+                              margin:0 })
+                       .addClass('movendo');
+            }
+            else{
+                $(this).removeClass('movendo');
+            }
+        });
     },
     renderizar: function(){
 
