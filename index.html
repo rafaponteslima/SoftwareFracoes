@@ -1,27 +1,45 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title></title>
+    <title>Fractron - Item I</title>
+    
+    <meta http-equiv="Content-Language" content="pt-br">
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8" >
+
     <script src="vendor/jquery-1.7.1.min.js" type="text/javascript" charset="utf-8"></script>
-    <script src="proto.js" type="text/javascript" charset="utf-8"></script>
-
-    <script type="text/javascript" charset="utf-8" async defer>
-     $(function(){
-         
-         Fractron.elem = $('body');
-         var fracao = new grafico(240, 210, 6, 12);
-         var fracao = new grafico(240, 210, 6, 3);
-         var fracao = new grafico(240, 210, 3, 1);
-         var fracao = new grafico(240, 210, 1, 3);
-     });
-    </script>
-
+    <link rel="stylesheet" href="css/reset.css">
     <link rel="stylesheet" href="css/principal.css">
 </head>
 <body>
 
-<div id="barra-principal"></div>
-<div id="palco"></div>
+    <div id="wraper">
+        
+        <!-- -->
+        <div id="barra-titulo">
+            <!-- -->
+            <div id="menu"></div>
+        </div>
+        
+        <!-- -->
+        <div id="palco">
+            <p class="titulo center">1. Qual a soma de 3/4 e 1/4</p>
+            <p class="instrucao center">Dica: represente o resultado graficamente de descreva a solução.</p>
+
+            <!-- canvas/obj -->
+            <div id="fractron"></div>
+
+            <form action="" method="get" accept-charset="utf-8">
+                <textarea name="" id="relatorio-aluno" cols="30" rows="10"></textarea>
+                <input type="submit" name="" value="" />
+            </form>
+
+        </div>
+        
+        <!-- -->
+        <div id="barra-lateral">
+            <div id="navegacao"></div>
+        </div>    
+    </div>
 
 </body>
 </html>
